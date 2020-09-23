@@ -1,0 +1,36 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Londrina Solid', cursive;
+}
+
+body{
+    background: lightgrey;
+}
+
+#pokeLogo-page{
+    width: 100px;
+}
+
+#img-register {
+    max-width: 500px;
+    margin-bottom: 5px;
+}
+
+#wallpaperPoke {
+    background-image: url('https://i.pinimg.com/originals/1e/0d/95/1e0d950187a0f8d1b9b13916e0fdf558.jpg');
+    background-size: 93%;
+    background-position: right;
+}
+
+#signin {
+    width: 600px;
+    font-family: 'Londrina Solid', cursive;
+    font-size: 28px;
+    color: tomato;
+}
+
+
+.pokesIcon {
+    width: 50px;
+}
