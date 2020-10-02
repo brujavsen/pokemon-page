@@ -38,7 +38,7 @@ function showNewComment(){
 
 //Mostrar pokemones en pantalla
     const poke_contenedor = document.getElementById('poke-content');
-    const pokemons_number = 150;
+    const pokemons_number = 26;
 
     //Colores para tipo de Pokémon
     const typeColor = {
@@ -60,7 +60,7 @@ function showNewComment(){
 
     const color_types_main = Object.keys(typeColor);
 
-    const fetchPoke =async () => {
+    const fetchPoke = async () => {
         for(let i=1; i <= pokemons_number; i++) {
             await getPoke(i);
         }
@@ -71,7 +71,6 @@ function showNewComment(){
     var response = await fetch(poke_url);
     var pokemon = await response.json();
     createPokeCard(pokemon);
-    
     } 
 
     fetchPoke();
@@ -89,7 +88,7 @@ function showNewComment(){
 
         let pokeInnerHTML = `
             <div class='img-poke'>
-                <img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png">
+                <a href="./pokemon.html"><img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png"></a>
             </div>
 
             <div class="info"> 
@@ -105,24 +104,8 @@ function showNewComment(){
 
         poke_contenedor.appendChild(pokemonElement);
 
-//Nueva cuenta
-  
 
-    if (!window.location.href.endsWith('newAccount.html')
-    && !sessionStorage.getItem('logged')) {
-    window.location.href = "newAccount.html";
-    }
-
-    const headDiv = document.getElementById('usuario-name');
-
-    let nameUser = JSON.parse(localStorage.getItem('users'));
-
-
-    if(nameUser != null){
-        headDiv.innerHTML = nameUser[0].usuario;
-    }
-
-        //Buscador de pokémones
+//Buscador de pokémones
 
         // const search_bar = document.getElementById('searchPoke');
         // const button_search = document.getElementById('btn-search');

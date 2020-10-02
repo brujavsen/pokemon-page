@@ -18,24 +18,26 @@ body{
     align-items: space-between;
     justify-content: center;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 2000px;
 }
 
 .pokemon {
     background-color: #eee;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 3px 15px rgba(255,255,255,0.5);
-    margin: 10px;
+    border-radius: 40%;
+    border: 1px solid black;
+    padding: 15px;
+    box-shadow: 0 3px 15px rgba(29, 29, 29, 0.5);
+    margin: 2px;
     text-align: center;
 }
 
 .pokemon .img-poke {
-    background-color: rgba(255,255,255,0.6);
+    background-image: linear-gradient(-225deg, #ca18188f 50%, #ffffff88 20%);
+    border: 1px solid black;
     border-radius: 50%;
-    margin-top: 20px;
-    height: 120px;
-    width: 120px;
+    margin-top: 2px;
+    height: 130px;
+    width: 130px;
 }
 
 .pokemon .img-poke img {

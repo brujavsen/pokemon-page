@@ -4,6 +4,7 @@
     <title>150 Pokémons</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="author" content="Bruno Sena">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" href="https://icon-library.com/images/pokemon-app-icon/pokemon-app-icon-4.jpg" type="image/x-icon">
@@ -26,9 +27,7 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./newAccount.html">Crear cuenta</a>
-                </li>
+                
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Otros
@@ -36,6 +35,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Blog (en proceso)</a>
                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="./newAccount.html">Crear cuenta</a>
                     <a class="dropdown-item" href="#">Iniciar sesión (en proceso)</a>
                   </div>
                 </li>
@@ -55,7 +55,7 @@
         <section id="poke-content"></section>
         
         <aside>
-            
+            <!-- Comentarios de usuarios -->    
             <div class="jumbotron">
                 <form>
                     <div class="seccionComment">
@@ -65,7 +65,7 @@
                         <div id="commentUser">
                             <input id="nameUser" type="text" placeholder="Ingrese su nombre"><br>
                             <textarea id="commUser" cols="30" rows="10"></textarea><br>
-                            <button id="btnComment" onclick="newCommentUser()" type="reset">Enviar</button>
+                            <button id="btnComment" class="btn btn-danger" onclick="newCommentUser()" type="reset">Enviar</button>
                         </div>
                         
                         <div id="newCommentary"></div>
@@ -81,9 +81,10 @@
         <footer>
             Bruno Sena 2020 
         </footer>
-        <!-- Comentarios de usuarios -->
+        
     </div>
     <script src="./js/main.js"></script>
+    <script src="./js/newAccount.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
