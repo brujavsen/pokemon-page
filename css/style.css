@@ -4,15 +4,15 @@
     font-family: 'Londrina Solid', cursive;
 }
 
-body{
+body {
     background: lightgrey;
 }
 
-#pokeLogo-page{
+#pokeLogo-page {
     width: 100px;
 }
 
-#poke-content{
+#poke-content {
     display: flex;
     flex-wrap: wrap;
     align-items: space-between;
@@ -21,42 +21,19 @@ body{
     max-width: 2000px;
 }
 
-.pokemon {
-    background-color: #eee;
-    border-radius: 40%;
-    border: 1px solid black;
-    padding: 15px;
-    box-shadow: 0 3px 15px rgba(29, 29, 29, 0.5);
-    margin: 2px;
-    text-align: center;
+#pokeBtn {
+    margin-left: 0.5%;
+    display: inline;
+    inline-size: 10%;
 }
 
-.pokemon .img-poke {
-    background-image: linear-gradient(-225deg, #ca18188f 50%, #ffffff88 20%);
-    border: 1px solid black;
-    border-radius: 50%;
-    margin-top: 2px;
-    height: 130px;
-    width: 130px;
+#pokeCnt {
+    margin-bottom: 2%;
+    margin-top: 2%;
+    display: flex;
 }
 
-.pokemon .img-poke img {
-    margin-top: 20px;
-    max-width: 90%;
-}
-
-.pokemon .info {
-    margin-top: 20px;
-}
-
-.pokemon .number {
-    background-color: #fff;
-    border-radius: 10px;
-    font-size: 0.8em;
-    padding: 5px 10px;
-}
-
-.pokemon .name {
-    margin: 15px 0 7px;
-    letter-spacing: 1px;
+.cntDesc {
+    margin-inline-start: auto;
+    margin-inline-end: auto;
 }

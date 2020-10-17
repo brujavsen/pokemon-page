@@ -1,148 +1,88 @@
-let nombreUsuario = document.getElementById('nameUser');
-let comentar = document.getElementById('commUser');
-let newComment = document.getElementById('newCommentary');
+const Poke_URL = "https://pokeapi.co/api/v2/pokemon?limit=30"
+const list_poke_cnt = document.getElementById("pokeList");
+const descr_poke_cnt = document.getElementById("pokeCnt");
 
-function newCommentUser(){
+async function pokeFetch() {
+    fetch(Poke_URL)
+        .then(repuesta => repuesta.json())
+        .then(pokeData => {
+            var pokeObj = pokeData.results
+            console.log(pokeObj);
 
-    //Datos que se van a ingresar
-    function dataUser(nombre, comentario){
-        this.nombre=nombre;
-        this.comentario=comentario;
-    }
+            let pokemon;
+            var htmlContentToAppend = "";
 
-    var name = nombreUsuario.value;
-    var comment = comentar.value;
+            for (let i = 0; i < pokeObj.length; i++) {
+                pokemon = pokeObj[i];
 
-    //Se agregan los datos del ususario y crea un nuevo comentario
-    nuevoComentary = new dataUser(name,comment);
-    console.log(nuevoComentary);
-    showNewComment();
-}
+                htmlContentToAppend += `
+                <div id="pokeBtn">
+                    <button class="btn btn-danger" id="poke${i}">${pokemon.name}</button>
+                </div>
+                `
 
-    //Se guarda nuevos comentarios en array
-    var nuevosComentarios = [];
+            };
 
-    //Muestra los comentarios en pantalla
-function showNewComment(){
-    nuevosComentarios.push(nuevoComentary);
-    newComment.innerHTML += `
-        <div class="userName">
-            <h3>`+ nuevoComentary.nombre +`</h3>        
-        </div>
-        <div class="userComment">
-            <p>`+ nuevoComentary.comentario +`</p>
-        </div><hr/>
-    `
-}
+            list_poke_cnt.innerHTML = htmlContentToAppend;
 
-
-//Mostrar pokemones en pantalla
-    const poke_contenedor = document.getElementById('poke-content');
-    const pokemons_number = 26;
-
-    //Colores para tipo de Pokémon
-    const typeColor = {
-        grass: '#DEFDE0',
-        fire: '#FDDFDF',
-        electric: '#FCF7DE',
-        water: '#DEF3FD',
-        ground: '#f4e7da',
-        rock: 'd5d5d4',
-        fairy: '#fceaff',
-        poison: '#98d7a5',
-        bug: '#f8d5a3',
-        dragon: '#97b3e6',
-        psychic: '#eaeda1',
-        flying: '#F5F5F5',
-        fighting: '#E6E0O4',
-        normal: '#F5F5F5'
-    };
-
-    const color_types_main = Object.keys(typeColor);
-
-    const fetchPoke = async () => {
-        for(let i=1; i <= pokemons_number; i++) {
-            await getPoke(i);
-        }
-    }
-
-    const getPoke = async id => {
-    const poke_url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-    var response = await fetch(poke_url);
-    var pokemon = await response.json();
-    createPokeCard(pokemon);
-    } 
-
-    fetchPoke();
-
-    function createPokeCard(pokemon) {
-        const pokemonElement = document.createElement('div');
-        pokemonElement.classList.add('pokemon');
-
-        var namesPoke = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
-        var typePoke = pokemon.types.map(typePoke => typePoke.type.name);
-        var typeMainCol = color_types_main.find(typeCol => typePoke.indexOf(typeCol) > -1);
-        var colorPokeType = typeColor[typePoke];
-
-        pokemonElement.style.backgroundColor = colorPokeType;
-
-        let pokeInnerHTML = `
-            <div class='img-poke'>
-                <a href="./pokemon.html"><img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png"></a>
-            </div>
-
-            <div class="info"> 
-                <span class="number">#${pokemon.id.toString().padStart(3, '0')}</span>
-                <h3 class="name">${namesPoke}</h3>
-                <small class="type">Type: <span>${typePoke}</span></small>
-            </div>
             
-        
-        `;
 
-        pokemonElement.innerHTML = pokeInnerHTML;
+            for (let i = 0; i < pokeObj.length; i++) {
 
-        poke_contenedor.appendChild(pokemonElement);
+                document.getElementById(`poke${i}`).addEventListener("click", () => {
+                    fetch(pokeObj[i].url)
+                        .then(repuesta => repuesta.json())
+                        .then(pokeDescr => {
+                            console.log(pokeDescr);
 
+                            var htmlContentToAppend2 = "";
 
-//Buscador de pokémones
-
-        // const search_bar = document.getElementById('searchPoke');
-        // const button_search = document.getElementById('btn-search');
-        
-        // let filtrado = ()=>{
+                            htmlContentToAppend2 += `
+                            <div class="cntDesc border-dark">
+                                <table class="table">
+                                    <thead class="thead-warning border-dark">
+                                        <tr>
+                                            <th class="border-dark rounded" scope="col"><img src=${pokeDescr.sprites.front_default}></th>
+                                            <th class="border-dark rounded" scope="col"><img src=${pokeDescr.sprites.front_shiny}></th>
+                                            <th class="bg-primary text-white" scope="col"><h2>${pokeDescr.name}</h2></th>
+                                            <th class="bg-primary text-white" scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-dark bg-warning text-dark">
+                                            <th scope="row">Caract.</th>
+                                            <td>Weight:${pokeDescr.weight}</td>
+                                            <td>Height:${pokeDescr.height}</td>
+                                            <td>Id:${pokeDescr.id}</td>
+                                        </tr>
+                                        <tr class="bg-success text-white">
+                                            <th scope="row">Abilities</th>
+                                            <td>${pokeDescr.abilities[0].ability.name}</td>
+                                            <td>${pokeDescr.abilities[1].ability.name}</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr class="bg-danger text-dark">
+                                            <th scope="row">Type</th>
+                                            <td>${pokeDescr.types[0].type.name}</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                 
-        //     pokemonElement.innerHTML = '';
-        
-        //     var texto = search_bar.value.toLowerCase();
-        
-        //     for(let pokemones of pokemon){
-        //         let nombre = pokemones.namesPoke.toLowerCase();
-        //         if(nombre.indexOf(texto) !== -1){
-        //             pokemonElement.innerHTML += `
-        //             <div class='img-poke'>
-        //                 <img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png">
-        //             </div>
-        
-        //             <div class="info"> 
-        //                 <span class="number">#${pokemon.id.toString().padStart(3, '0')}</span>
-        //                 <h3 class="name">${namesPoke}</h3>
-        //                 <small class="type">Type: <span>${typePoke}</span></small>
-        //             </div>
-        //         `
-        //         }
-        //     }
-        
-        //     if(pokemonElement.innerHTML === ''){
-        //         pokemonElement.innerHTML += `<p>No se encontró el pokémon</p>`
-        //     }
-        // }
-        
-        // button_search.addEventListener('click', filtrado)
-        // search_bar.addEventListener('keyup', filtrado)
+                            `
 
-    };
+                            descr_poke_cnt.innerHTML = htmlContentToAppend2;
+                        });
 
-    
-    
-    
+                });
+
+            };
+
+        });
+};
+
+pokeFetch();
+
+

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <title>150 Pokémons</title>
+    <title>Pokéworld</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="author" content="Bruno Sena">
@@ -25,47 +25,27 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Otros
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Blog (en proceso)</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="./newAccount.html">Crear cuenta</a>
-                    <a class="dropdown-item" href="#">Iniciar sesión (en proceso)</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link btn-danger" href="./profile.html" id="usuario-name"></a>
+                  <a class="nav-link" href="#">Welcome to Pokéworld <span class="sr-only">(current)</span></a>
                 </li>
               </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <p>Barra de búsqueda, en proceso :c </p>
-                <input class="form-control mr-sm-2" type="search" placeholder="Busca tu pokémon" aria-label="Search" id="searchPoke" disabled>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="btn-search">Buscar</button>
-              </form>
             </div>
           </nav>
 
-        
-        <section id="poke-content"></section>
-        
+        <div id="pokeList"></div>
+        <div id="pokeCnt"></div>
+
         <aside>
             <!-- Comentarios de usuarios -->    
             <div class="jumbotron">
                 <form>
                     <div class="seccionComment">
 
-                        <h2>Sección de comentarios</h2>
+                        <h2>Comment section</h2>
                         
                         <div id="commentUser">
-                            <input id="nameUser" type="text" placeholder="Ingrese su nombre"><br>
+                            <input id="nameUser" type="text" placeholder="Enter your name"><br>
                             <textarea id="commUser" cols="30" rows="10"></textarea><br>
-                            <button id="btnComment" class="btn btn-danger" onclick="newCommentUser()" type="reset">Enviar</button>
+                            <button id="btnComment" class="btn btn-danger" onclick="newCommentUser()" type="reset">Submit</button>
                         </div>
                         
                         <div id="newCommentary"></div>
@@ -83,8 +63,7 @@
         </footer>
         
     </div>
-    <script src="./js/main.js"></script>
-    <script src="./js/newAccount.js"></script>
+    <script src="js/main.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
